@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
 gem 'rails', '4.2.7'
+gem 'haml'
+gem "figaro"
+gem 'mandrill_mailer'
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-helpers'
 gem "font-awesome-rails"
@@ -14,7 +17,6 @@ group :development, :test do
 end
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'spring'
 end
 gem 'devise'
 gem 'pg'
