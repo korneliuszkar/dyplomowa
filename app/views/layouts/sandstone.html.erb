@@ -13,8 +13,10 @@
   <![endif]-->
 
   <%= stylesheet_link_tag "sandstone", :media => "all" %>
+  <%= javascript_include_tag 'sandstone' %>
 
   <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
+  <%= yield(:page_javascript) if content_for?(:page_javascript) %>
 
 </head>
 <body>
@@ -39,6 +41,5 @@
      <%#= render 'layouts/examples/wells' %>
     </div>
   </div> <!-- /container -->
-
 </body>
 </html>
