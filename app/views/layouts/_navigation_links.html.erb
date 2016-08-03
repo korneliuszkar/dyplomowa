@@ -14,14 +14,14 @@
         <li class="active"><a href="">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pierwsza opcja</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Druga opcja</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Trzecia opcja</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Czwarta opcja</a></li>
+        <li class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Przycisk <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Akcja</a></li>
+            <li><a href="#">Inna akcja</a></a></li>
+            <li><a href="#">Jeszcze inna akcja</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Oddzielona akcja</a></li>
           </ul>
         </li>
         <% if user_signed_in? %>
