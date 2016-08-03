@@ -5,7 +5,7 @@ ActionMailer::Base.smtp_settings = {
     #:enable_starttls_auto: true,
     :user_name => ENV['MANDRILL_USERNAME'],
     :password  => ENV['MANDRILL_API_KEY'],
-    #:domain    => 'localhost'
+    :domain    => 'heroku.com'
   }
 ActionMailer::Base.delivery_method = :smtp
 
