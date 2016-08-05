@@ -1,0 +1,6 @@
+Nazwa: <%= @service.name %><br />
+Czas trwania: <%= @service.time %><br />
+Cena: <%= @service.price %><br />
+<%= link_to "edit", edit_panel_service_path(@service) %><br />
+<%= link_to "delete", panel_service_path(@service), remote: true, method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%><br/>
+<%= link_to "Back", :back %>

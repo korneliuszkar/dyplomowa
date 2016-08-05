@@ -1,0 +1,14 @@
+<%= form_for [:panel, @service] do |f| %>
+  <%= f.label :name, "Nazwa" %><br /> 
+  <%= f.text_field :name, autofocus: true %><br />
+  <%= f.label :time %><br /> 
+  <%= f.text_field :time %><br />
+  <%= f.label :price %><br /> 
+  <%= f.text_field :price %><br />
+  <%= f.submit "Submit"%>
+<% end %>
+<% if @service.errors.full_messages.any? %>
+  <% @service.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>

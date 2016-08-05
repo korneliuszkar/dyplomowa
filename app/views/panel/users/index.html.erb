@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <td>Email</td>
+    <td>Data rejestracji</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+        <td><%= link_to "show", panel_user_path(user.id) %></td>
+        <td><%= link_to "edit", edit_panel_user_path(user) %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <td><%= link_to "new user", new_panel_user_path %></td> 
+  </tr>
+</table>

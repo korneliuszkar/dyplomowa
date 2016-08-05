@@ -1,0 +1,5 @@
+<%= form_for @user, url: panel_user_path(@user) do |f| %>
+  Username: <%= f.text_field :name %><br />
+  E-mail : <%= f.email_field :email, autofocus: true %><br />
+  <%= f.submit "Submit"%>
+<% end %>
