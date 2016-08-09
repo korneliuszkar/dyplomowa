@@ -1,11 +1,14 @@
 <%= form_for [:panel, @service] do |f| %>
-  <%= f.label :name, "Nazwa" %><br /> 
-  <%= f.text_field :name, autofocus: true %><br />
+<div class="form-group <%= f.object.errors[:name].present? ? "has-error" : "" %>">
+  <%= f.label :name, "Nazwa" %>
+  <%= f.text_field :name, autofocus: true, class: "form-control"%>
+  <small id="nameHelp" class="form-text text-danger">Error</small>
+  </div>
   <%= f.label :time %><br /> 
   <%= f.text_field :time %><br />
   <%= f.label :price %><br /> 
   <%= f.text_field :price %><br />
-  <%= f.submit "Submit"%>
+  <%= f.submit "Submit", class: "btn btn-primary"%>
 <% end %>
 <% if @service.errors.full_messages.any? %>
   <% @service.errors.full_messages.each do |message| %>

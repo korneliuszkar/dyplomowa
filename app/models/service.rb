@@ -11,9 +11,23 @@
 #
 
 class Service < ActiveRecord::Base
-  include ActiveModel::Validations
   validates :name, presence: true
   validates :time, numericality: {:greater_than => 0}, presence: true
-  validates :price, presence:true, numericality: {:greater_than => 0} 
-  #validates :price, presence: true, numericality: true
+  validates :price, presence:true, numericality: {:greater_than => 0}
+
+  before_validation :set_defaults, on: [:update, :create]
+  before_save :calculate_cost
+  before_update :actual_service
+
+  #private
+  def set_defaults
+    self.name = "Without name" if name.blank?
+  end
+
+  def calculate_cost
+    self.cost_per_minute = price / time
+  end
+  def actual_service
+    UserMailer.service_update(@user).deliver_now
+  end
 end

@@ -44,6 +44,7 @@ class Panel::ServicesController < PanelController
   def update
     respond_to do |format|
       if @service.update(service_params)
+        UserMailer.service_update(@user).deliver_now
         format.html { redirect_to panel_service_path, notice: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
       else
