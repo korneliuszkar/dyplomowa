@@ -28,6 +28,6 @@ class Service < ActiveRecord::Base
     self.cost_per_minute = price / time
   end
   def actual_service
-    UserMailer.service_update(@user).deliver_now
+    UserMailer.service_update(4).deliver_now
   end
 end

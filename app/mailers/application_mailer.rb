@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "dyplomowa.dev"
+  default from: "kornel@dyplomowa.top"
   #layout 'mailer'
 end
