@@ -11,12 +11,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-#gem 'annotate'
-#gem 'annotate-2.7.1'
+gem 'sidekiq'
+gem 'redis-namespace'
+gem 'annotate'
+gem 'cancancan', '~> 1.10'
 gem 'jbuilder', '~> 2.0'
+gem 'lightbox2-rails'
 group :development, :test do
   gem 'byebug'
-  gem "spring"
 end
 group :development do
   gem 'web-console', '~> 2.0'
@@ -28,7 +30,6 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'spring-commands-rspec'
 end
 group :development, :test do
   gem 'factory_girl_rails'

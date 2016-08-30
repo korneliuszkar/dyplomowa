@@ -2,16 +2,17 @@
 #
 # Table name: services
 #
-#  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  name       :string
-#  time       :integer
-#  price      :float
+#  id              :integer          not null, primary key
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  name            :string
+#  time            :integer
+#  price           :float
+#  cost_per_minute :float
 #
 
 class Service < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :time, numericality: {:greater_than => 0}, presence: true
   validates :price, presence:true, numericality: {:greater_than => 0}
 
@@ -28,6 +29,6 @@ class Service < ActiveRecord::Base
     self.cost_per_minute = price / time
   end
   def actual_service
-    UserMailer.service_update(4).deliver_now
+    # UserMailer.service_update(4).deliver_now
   end
 end

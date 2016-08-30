@@ -1,14 +1,20 @@
 <%= form_for [:panel, @service] do |f| %>
-<div class="form-group <%= f.object.errors[:name].present? ? "has-error" : "" %>">
+<div class="form-group <%= f.object.errors[:name].present? ? "has-error" : "" %> col-sm-3">
   <%= f.label :name, "Nazwa" %>
   <%= f.text_field :name, autofocus: true, class: "form-control"%>
-  <small id="nameHelp" class="form-text text-danger">Error</small>
-  </div>
+  <small id="nameHelp" class="form-text text-danger">Error</small><br/>
   <%= f.label :time %><br /> 
-  <%= f.text_field :time %><br />
+  <div class="input-group">
+    <%= f.text_field :time, class: "form-control" %>
+    <span class="input-group-addon">min</span>
+  </div>
   <%= f.label :price %><br /> 
-  <%= f.text_field :price %><br />
+  <div class="input-group">
+    <%= f.text_field :price, class: "form-control" %><br />
+    <span class="input-group-addon">zł</span>
+  </div>
   <%= f.submit "Submit", class: "btn btn-primary"%>
+  </div>
 <% end %>
 <% if @service.errors.full_messages.any? %>
   <% @service.errors.full_messages.each do |message| %>

@@ -20,6 +20,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  role                   :string           default("customer"), not null
 #
 
 describe User do

@@ -1,0 +1,22 @@
+Nazwa: <%= @package.name %><br />
+<%= link_to "edit", edit_panel_package_path(@package) %><br />
+<%= link_to "delete", panel_package_path(@package), remote: true, method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%><br/>
+<%= link_to "Back", :back %><br/>
+Usługi w paczce: <br/>
+<table>
+  <tr>
+    <td>Id</td>
+    <td>Nazwa</td>
+  </tr>
+
+  <% @package.package_services.each do |package_service| %>
+      <tr>
+        <td><%= package_service.service.id %></td>
+        <td><%= package_service.service.name %></td>
+        <td><%= link_to "delete", panel_package_package_service_path(@package.id, package_service ), remote: false, method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></td>
+      </tr>
+  <% end %>
+  <tr>
+    <td><%= link_to "new package_service", new_panel_package_package_service_path(@package.id) %></td>
+  </tr>
+</table>

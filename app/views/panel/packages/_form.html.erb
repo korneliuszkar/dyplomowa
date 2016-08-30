@@ -1,0 +1,13 @@
+<%= form_for [:panel, @package] do |f| %>
+<div class="form-group <%= f.object.errors[:name].present? ? "has-error" : "" %>">
+  <%= f.label :name, "Nazwa" %>
+  <%= f.text_field :name, autofocus: true, class: "form-control"%>
+  <small id="nameHelp" class="form-text text-danger">Error</small>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+<% end %>
+<% if @package.errors.full_messages.any? %>
+  <% @package.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>

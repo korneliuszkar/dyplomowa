@@ -1,16 +1,20 @@
-<table>
+<div class="table-responsive">
+<table class="table table-bordered">
   <tr>
+    <td>Id</td>
     <td>Nazwa</td>
     <td>Czas trwania</td>
     <td>Cena</td>
     <td></td>
     <td></td>
+    <td></td>
   </tr>
   <% @services.each do |service| %>
       <tr>
+        <td><%= service.id %></td>
         <td><%= service.name %></td>
-        <td><%= service.time %></td>
-        <td><%= service.price %></td>
+        <td><%= service.time %> min</td>
+        <td><%= service.price %> zł</td>
         <td><%= link_to "show", panel_service_path(service.id) %></td>
         <td><%= link_to "edit", edit_panel_service_path(service) %></td>
         <td><%= link_to "delete", panel_service_path(service), remote: false, method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></td>
@@ -20,3 +24,4 @@
     <td><%= link_to "new service", new_panel_service_path %></td> 
   </tr>
 </table>
+</div>

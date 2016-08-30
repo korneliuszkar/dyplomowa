@@ -1,5 +1,6 @@
 class Panel::UsersController < PanelController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :user
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -44,8 +45,10 @@ class Panel::UsersController < PanelController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    self_update = true if @user.id == current_user.id
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params_update)
+        bypass_sign_in(@user) if self_update
         format.html { redirect_to panel_user_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -60,19 +63,32 @@ class Panel::UsersController < PanelController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+    # def set_user
+    #   @user = User.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password, :role, :password_confirmation)
+    end
+    def user_params_update
+      params[:user].delete(:password) if params[:user][:password].blank?
+      params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+      permit_params = [:name, :email, :role]
+      if current_user.id == @user.id
+        permit_params << :password
+        permit_params << :password_confirmation
+      end
+      # params[:user].delete(:password) if params[:user][:password].blank?
+      # params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+      params.require(:user).permit(permit_params)
+      # params.require(:user).permit(:name, :email, :password, :role, :password_confirmation)
     end
 end

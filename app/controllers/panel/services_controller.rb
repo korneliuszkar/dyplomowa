@@ -1,10 +1,9 @@
 class Panel::ServicesController < PanelController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :service
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -17,7 +16,6 @@ class Panel::ServicesController < PanelController
 
   # GET /services/new
   def new
-    @service = Service.new
   end
 
   # GET /services/1/edit
@@ -27,7 +25,7 @@ class Panel::ServicesController < PanelController
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(service_params)
+    # @service = Service.new(service_params)
     respond_to do |format|
       if @service.save
         format.html { redirect_to panel_service_path(@service), notice: 'Service was successfully created.' }
@@ -65,9 +63,9 @@ class Panel::ServicesController < PanelController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_service
-      @service = Service.find(params[:id])
-    end
+    # def set_service
+    #   @service = Service.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params

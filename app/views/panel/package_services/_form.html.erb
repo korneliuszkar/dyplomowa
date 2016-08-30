@@ -1,0 +1,12 @@
+<%= form_for [:panel, @package, @package_service] do |f| %>
+  <div class="form-group">
+    <%= f.label @package.name %><br />
+    <%= f.select(:service_id, Service.all.collect {|s| [ s.name, s.id ] }) %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+<% end %>
+<% if @package_service.errors.full_messages.any? %>
+  <% @package_service.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
