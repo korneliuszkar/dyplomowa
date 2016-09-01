@@ -12,4 +12,3 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( sandstone.css sandstone.js )
 Rails.application.config.assets.precompile += %w( home.css home.js )
 Rails.application.config.assets.precompile += %w( lightbox/* )
-Rails.application.config.assets.precompile += %w( responsive.css responsive.js )
