@@ -7,7 +7,7 @@
     <td></td>
     <td></td>
   </tr>
-  <% @packages.each do |package| %>
+  <% @packages.order(:name).each do |package| %>
       <tr>
         <td><%= package.id %></td>
         <td><%= package.name %></td>

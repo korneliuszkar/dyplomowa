@@ -9,7 +9,7 @@
     <td></td>
     <td></td>
   </tr>
-  <% @users.each do |user| %>
+  <% @users.order(:id).each do |user| %>
       <tr>
         <td><%= user.id %></td>
         <td><%= user.email %></td>

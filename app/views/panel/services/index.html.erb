@@ -9,7 +9,7 @@
     <td></td>
     <td></td>
   </tr>
-  <% @services.each do |service| %>
+  <% @services.order(:name).each do |service| %>
       <tr>
         <td><%= service.id %></td>
         <td><%= service.name %></td>
